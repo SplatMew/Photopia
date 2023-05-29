@@ -1,0 +1,8 @@
+#node 
+node_modules
+# dependencies
+frontend/node_modules
+frontend/.pnp
+
+#envionment variables
+.env
