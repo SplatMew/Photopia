@@ -1,6 +1,7 @@
 import toast from 'react-hot-toast'
 import { usePosts } from '../context/postContext.js'
 import { useNavigate } from 'react-router-dom'
+import { errorToast } from './errorToast.js'
 
 export function NewPostCard({ post }) {
 
@@ -13,13 +14,26 @@ export function NewPostCard({ post }) {
     toast((t) => (
       <div>
         <p>
-          Do you want to delete this post?
+          <b>
+            Do you want to delete this post?
+          </b>
         </p>
         <div>
           <button className='bg-red-500 hover:bg-red-400 px-3 py-3 text-white rounded-sm mx-2'
-            onClick={() => { deletePost(_id); toast.dismiss(t.id); }} >  Delete</button>
+            onClick={() => {
+              try {
+                deletePost(_id);
+                toast.dismiss(t.id);
+              } catch (error) {
+                console.log(error)
+                toast.dismiss(t.id);
+                errorToast()
+              }
+            }}> Delete </button>
+
           <button className='bg-green-600 hover:bg-green-500 px-3 py-3 text-white rounded-sm mx-2'
-            onClick={() => toast.dismiss(t.id)}>  Cancel</button>
+            onClick={() => toast.dismiss(t.id)}>  Cancel 
+          </button>
         </div>
       </div>
     ))
@@ -27,7 +41,7 @@ export function NewPostCard({ post }) {
 
   return (
     <div className='bg-zinc-800 text-white rounded-md shadow-md shadow-black hover:bg-zinc-700 hover:cursor-pointer'
-      /*onClick={() => navigate(`/posts/${post._id}`)}*/
+    /*onClick={() => navigate(`/posts/${post._id}`)}*/
     >
       <div className="px-2 py-7">
         <div className="flex justify-between">

@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { usePosts } from '../context/postContext.js'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useNavigate, useParams } from 'react-router-dom'
-import {AiOutlineLoading3Quarters} from 'react-icons/ai'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import * as Yup from 'yup'
+import { errorToast } from '../components/errorToast.js'
 
 export function PostsForm() {
 
@@ -44,7 +45,7 @@ export function PostsForm() {
         /*Para el validation Schema utilizamos Yup, otra libreria que comunmente se 
           utiliza con Formik, y, como un model schema, nos permite especificar parametros\
           para los campos del formulario*/
-          
+
         validationSchema={Yup.object({
           title: Yup.string().required('Post Author is required').max(20),
           description: Yup.string().required('Post description is required.').max(40)
@@ -56,10 +57,16 @@ export function PostsForm() {
             await updatePost(params.id, values)
 
           } else {
-            await createPost(values)
+
+            try {
+              await createPost(values)
+            } catch (error) {
+              console.log(error)
+              errorToast()
+            }
           }
           actions.setSubmitting(false)
-          setTimeout(2000)
+
           navigate('/')
         }}
 
@@ -68,6 +75,7 @@ export function PostsForm() {
         {({ handleSubmit, setFieldValue, isSubmitting }) => (
 
           <Form onSubmit={handleSubmit}>
+
             <div className="text-white text-sm">
               Name
             </div>
@@ -76,9 +84,11 @@ export function PostsForm() {
               name='title'
               placeholder="Your Name here!"
               className='px-3 py-2 focus:outline-none rounded bg-gray-600 text-white w-full' />
+
             <div className="text-amber-100 text-sm">
               20 Max. Characters
             </div>
+
             <ErrorMessage
               component="p"
               className="text-red-400 text-sm"
@@ -87,6 +97,7 @@ export function PostsForm() {
             <div className="text-white text-sm mt-5">
               Description
             </div>
+
             <Field
               name='description'
               placeholder="Your Post Description"
@@ -95,28 +106,30 @@ export function PostsForm() {
             <div className="text-amber-100 text-sm">
               40 Max. Characters
             </div>
+
             <ErrorMessage
               component="p"
               className="text-red-400 text-sm"
               name='description' />
 
-
             <label htmlFor='Image'
               className='text-sm block font-bold text-gray-400'>
+
               <input type="file"
-               name='image' 
-               className='px-3 py-2 focus:outline-none rounded text-white w-full'
-               onChange={(e) => setFieldValue('image', e.target.files[0])} />
+                name='image'
+                className='px-3 py-2 focus:outline-none rounded text-white w-full'
+                onChange={(e) => setFieldValue('image', e.target.files[0])} />
+
             </label>
 
             <button className='text-white bg-teal-500 px-5 py-1 mt-5 ' type="submit" disabled={isSubmitting}>
-              {isSubmitting? (
+              {isSubmitting ? (
                 <AiOutlineLoading3Quarters className='animate-spin h-5 w-5' />
               ) : 'Post'}
             </button>
+
           </Form>
         )}
-
       </Formik>
     </div>
   )
