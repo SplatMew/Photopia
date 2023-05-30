@@ -2,7 +2,8 @@ import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
 
-export function errorToast() {
+
+export function ErrorToast() {
 
   const navigate = useNavigate();
 
