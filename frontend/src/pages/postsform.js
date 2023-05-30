@@ -59,6 +59,7 @@ export function PostsForm() {
             await createPost(values)
           }
           actions.setSubmitting(false)
+          setTimeout(2000)
           navigate('/')
         }}
 
@@ -68,7 +69,7 @@ export function PostsForm() {
 
           <Form onSubmit={handleSubmit}>
             <div className="text-white text-sm">
-              Title
+              Name
             </div>
 
             <Field
