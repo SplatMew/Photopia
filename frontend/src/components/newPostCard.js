@@ -45,7 +45,7 @@ export function NewPostCard({ post }) {
     >
 
       <div className="px-2 py-7">
-        <div className="flex justify-between">
+        <div className="flex justify-between text-yellow-300">
           <h3>
             {post.title}
           </h3>
@@ -63,7 +63,7 @@ export function NewPostCard({ post }) {
 
       </div>
 
-      {post.image && <img src={post.image.url} className=' w-full h-96' />}
+      {post.image && <img src={post.image.url} className=' w-96 h-64 ' />}
     </div>
   )
 }
