@@ -49,7 +49,7 @@ export const deletePost = async (req,res) =>{
       const postRemoved = await postModel.findByIdAndDelete(req.params.id)
 
       if(postRemoved.image?.public_id){
-         console.log("post originally removed")
+         //console.log("post originally removed")
          await deleteImage(postRemoved.image.public_id)  
       }
       if(!postRemoved) return res.sendStatus(404)
