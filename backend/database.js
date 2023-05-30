@@ -8,10 +8,7 @@
             useNewUrlParser:true,
         });
 
-        const replica = await mongoose.createConnection(URI2, {
-              useNewUrlParser:true,
-        });
-
+        
         //console.log("Connection to ", db.connection.name);
         //console.log("Connection to ", replica.connection.name);
         
