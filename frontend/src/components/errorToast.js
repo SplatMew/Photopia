@@ -1,4 +1,6 @@
 import toast from 'react-hot-toast'
+import {navigate} from './newPostCard.js'
+
 
 export function errorToast() {
     toast((t) => (
