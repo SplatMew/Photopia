@@ -46,7 +46,7 @@ export function PostsForm() {
           para los campos del formulario*/
           
         validationSchema={Yup.object({
-          title: Yup.string().required('Post title is required').max(20),
+          title: Yup.string().required('Post Author is required').max(20),
           description: Yup.string().required('Post description is required.').max(40)
         })}
 
@@ -73,7 +73,7 @@ export function PostsForm() {
 
             <Field
               name='title'
-              placeholder="Your Post Title"
+              placeholder="Your Name here!"
               className='px-3 py-2 focus:outline-none rounded bg-gray-600 text-white w-full' />
             <div className="text-amber-100 text-sm">
               20 Max. Characters

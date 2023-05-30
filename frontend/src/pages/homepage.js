@@ -27,7 +27,7 @@ export function HomePage() {
                     items-center text-white'>
       <Link to="/new" className='text-yellow-300 mb-10 mt-10'> Create new post </Link>
       <div className='grid grid-cols-1' style={{ gridGap: 50 }}>
-        {posts.map(post => (
+        {posts.reverse().map(post => (
           <NewPostCard post={post} key={post._id} />
         ))}
       </div>

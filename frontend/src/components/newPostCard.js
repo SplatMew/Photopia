@@ -27,7 +27,7 @@ export function NewPostCard({ post }) {
 
   return (
     <div className='bg-zinc-800 text-white rounded-md shadow-md shadow-black hover:bg-zinc-700 hover:cursor-pointer'
-      onClick={() => navigate(`/posts/${post._id}`)}
+      /*onClick={() => navigate(`/posts/${post._id}`)}*/
     >
       <div className="px-2 py-7">
         <div className="flex justify-between">
