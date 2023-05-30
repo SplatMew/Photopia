@@ -35,6 +35,8 @@ export function PostsForm() {
 
   return (
     <div>
+
+      <img src="https://res.cloudinary.com/ddi8xaplx/image/upload/v1685474488/photopia_logo_l5gdlf.png" className=' w-96 h-50' />
       {/* Formik es una libreria que nos simplifica el uso de formularios, 
       ya cuenta con diferentes modulos para detectar errores en el formulario, 
       tener un schema del mismo, etc.*/}

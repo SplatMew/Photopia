@@ -32,7 +32,7 @@ export function NewPostCard({ post }) {
             }}> Delete </button>
 
           <button className='bg-green-600 hover:bg-green-500 px-3 py-3 text-white rounded-sm mx-2'
-            onClick={() => toast.dismiss(t.id)}>  Cancel 
+            onClick={() => toast.dismiss(t.id)}>  Cancel
           </button>
         </div>
       </div>
@@ -43,6 +43,7 @@ export function NewPostCard({ post }) {
     <div className='bg-zinc-800 text-white rounded-md shadow-md shadow-black hover:bg-zinc-700 hover:cursor-pointer'
     /*onClick={() => navigate(`/posts/${post._id}`)}*/
     >
+
       <div className="px-2 py-7">
         <div className="flex justify-between">
           <h3>
