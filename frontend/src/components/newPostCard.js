@@ -1,7 +1,7 @@
 import toast from 'react-hot-toast'
 import { usePosts } from '../context/postContext.js'
 import { useNavigate } from 'react-router-dom'
-import { errorToast } from './errorToast.js'
+import { ErrorToast } from './errorToast.js'
 
 export function NewPostCard({ post }) {
 
@@ -27,7 +27,7 @@ export function NewPostCard({ post }) {
               } catch (error) {
                 console.log(error)
                 toast.dismiss(t.id);
-                errorToast()
+                ErrorToast()
               }
             }}> Delete </button>
 

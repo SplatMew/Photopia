@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import * as Yup from 'yup'
-import { errorToast } from '../components/errorToast.js'
+import { ErrorToast } from '../components/errorToast.js'
 
 export function PostsForm() {
 
@@ -62,7 +62,7 @@ export function PostsForm() {
               await createPost(values)
             } catch (error) {
               console.log(error)
-              errorToast()
+              ErrorToast()
             }
           }
           actions.setSubmitting(false)
